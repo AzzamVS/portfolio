@@ -101,4 +101,14 @@
     </footer>
 
 </body>
+    <script>
+    const modelViewer = document.querySelector('model-viewer');
+    
+    // This function runs once the model is fully loaded
+    modelViewer.addEventListener('load', () => {
+        const material = modelViewer.model.materials[0];
+        // You can manually adjust colors or properties here if needed
+        console.log("Model loaded successfully with CAD Assistant geometry");
+    });
+    </script>
 </html>
