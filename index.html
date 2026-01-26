@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Engineering & Design</title>
+    <title>Engineering Portfolio | Design & Dev</title>
+    
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
     <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
     <nav>
         <div class="logo">DESIGN<span>&</span>CODE</div>
         <ul>
@@ -18,47 +21,85 @@
     </nav>
 
     <header class="hero">
-        <h1>Engineering Portfolio <br><span class="highlight">Azzam Daaboul</span></h1>
+        <h1>Engineering the <br><span class="highlight">Mechanical & Digital</span></h1>
         <p>Specializing in 3D Modeling, Mechanical Animation, and Web Development.</p>
         <a href="#work" class="btn">View My Projects</a>
     </header>
 
+    <section class="interactive-showcase">
+        <h2>Interactive Prototype</h2>
+        <div class="viewer-container">
+            <model-viewer 
+                src="your-model.glb" 
+                ar 
+                camera-controls 
+                touch-action="pan-y" 
+                auto-rotate 
+                poster="loading-image.jpg"
+                alt="3D Mechanical Assembly"
+                shadow-intensity="1">
+            </model-viewer>
+        </div>
+        <p class="hint">Click and drag to rotate the mechanism</p>
+    </section>
+
     <section id="work" class="portfolio">
-        <h2>Selected Projects</h2>
+        <h2 class="section-title">Selected Projects</h2>
         <div class="grid">
+            
             <div class="card">
-                <div class="card-image" style="background-image: url('revolver-render.jpg');"></div>
+                <div class="card-image" style="background-image: url('revolver-thumb.jpg');"></div>
                 <div class="card-content">
-                    <h3>Mechanical Toy Revolver</h3>
-                    <p>Detailed functional assembly designed in SOLIDWORKS and rendered in Blender.</p>
-                    <span class="tag">SOLIDWORKS</span> <span class="tag">Blender</span>
+                    <h3>Toy Revolver Design</h3>
+                    <p>Functional assembly designed for 3D printing with internal moving parts.</p>
+                    <div class="tags">
+                        <span class="tag">SOLIDWORKS</span>
+                        <span class="tag">Blender</span>
+                    </div>
                 </div>
             </div>
 
             <div class="card">
-                <div class="card-image" style="background-image: url('water-monitor.jpg');"></div>
+                <div class="card-image" style="background-image: url('water-app-thumb.jpg');"></div>
                 <div class="card-content">
                     <h3>Water Level Monitor</h3>
-                    <p>A PWA (Progressive Web App) designed for real-time monitoring and alerts.</p>
-                    <span class="tag">JavaScript</span> <span class="tag">Web App</span>
+                    <p>A web application built to track and visualize fluid levels in real-time.</p>
+                    <div class="tags">
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">PWA</span>
+                    </div>
                 </div>
             </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('mechanism-thumb.jpg');"></div>
+                <div class="card-content">
+                    <h3>Mechanism Animation</h3>
+                    <p>Exploded view and mechanical cycle animation rendered in Blender.</p>
+                    <div class="tags">
+                        <span class="tag">Animation</span>
+                        <span class="tag">Rendering</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="skills">
-        <h2>Toolbox</h2>
-        <div class="skills-container">
+    <section id="skills" class="skills">
+        <h2>Technical Toolbox</h2>
+        <div class="skills-grid">
             <span>Blender</span>
             <span>SOLIDWORKS</span>
-            <span>Google Apps Script</span>
+            <span>Google Sheets / Apps Script</span>
             <span>JavaScript</span>
-            <span>CSS/HTML</span>
+            <span>HTML & CSS</span>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 | Built with Code & Coffee</p>
+        <p>&copy; 2026 | Portfolio Project</p>
     </footer>
+
 </body>
 </html>
