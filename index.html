@@ -1,185 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Engineering Portfolio | Design & Dev</title>
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azzam Daaboul | Engineering & Design</title>
+  <link rel="stylesheet" href="style.css">
 
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-        }
-      }
-    </script>
+  <!-- model-viewer library for 3D models -->
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
+
 <body>
 
-    <nav>
-        <div class="logo">DESIGN<span>&</span>CODE</div>
-        <ul>
-            <li><a href="#work">Work</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- NAVIGATION -->
+  <nav aria-label="Main navigation">
+    <div class="logo">AZZAM<span>.</span>ENGINEERING</div>
+    <ul>
+      <li><a href="#work">Projects</a></li>
+      <li><a href="#skills">Toolbox</a></li>
+      <li><a href="#about">About Me</a></li>
+    </ul>
+  </nav>
 
-    <header class="hero">
-        <h1>Engineering the <br><span class="highlight">Mechanical & Digital</span></h1>
-        <p>Specializing in 3D Modeling, Mechanical Animation, and Web Development.</p>
-        <a href="#work" class="btn">View My Projects</a>
-    </header>
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Mechanical Engineer <br>& <span class="highlight">CAD Specialist</span></h1>
+    <p>Designing functional assemblies, 3D printing solutions, and web-based engineering tools.</p>
+  </header>
 
-    <section class="interactive-showcase">
-        <h2>Interactive Prototype</h2>
-        <div id="three-container" class="viewer-container" style="width: 100%; height: 550px; background: #151f32; border-radius: 20px; position: relative;">
-            <div id="loading-spinner" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #2dd4bf;">
-                Loading CAD Geometry...
-            </div>
+  <!-- SELECTED WORKS (revolver) -->
+  <section id="work" class="portfolio">
+    <h2 class="section-title">Toy Revolver Design</h2>
+
+    <div class="project-showcase">
+      <div class="image-carousel">
+        
+
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/revolver1.jpg" alt="3D render of toy revolver side view">
         </div>
-        <p class="hint">Left-click to Rotate 360° | Scroll to Zoom</p>
-    </section>
 
-    <section id="work" class="portfolio">
-        <h2 class="section-title">Selected Projects</h2>
-        <div class="grid">
-            
-            <div class="card">
-                <div class="card-image" style="background-image: url('revolver-thumb.jpg');"></div>
-                <div class="card-content">
-                    <h3>Toy Revolver Design</h3>
-                    <p>Functional assembly designed for 3D printing with internal moving parts.</p>
-                    <div class="tags">
-                        <span class="tag">SOLIDWORKS</span>
-                        <span class="tag">Blender</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image" style="background-image: url('water-app-thumb.jpg');"></div>
-                <div class="card-content">
-                    <h3>Water Level Monitor</h3>
-                    <p>A web application built to track and visualize fluid levels in real-time.</p>
-                    <div class="tags">
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">PWA</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-image" style="background-image: url('mechanism-thumb.jpg');"></div>
-                <div class="card-content">
-                    <h3>Mechanism Animation</h3>
-                    <p>Exploded view and mechanical cycle animation rendered in Blender.</p>
-                    <div class="tags">
-                        <span class="tag">Animation</span>
-                        <span class="tag">Rendering</span>
-                    </div>
-                </div>
-            </div>
-
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/revolver2.jpg" alt="3D render of toy revolver side view">
         </div>
-    </section>
 
-    <section id="skills" class="skills">
-        <h2>Technical Toolbox</h2>
-        <div class="skills-grid">
-            <span>Blender</span>
-            <span>SOLIDWORKS</span>
-            <span>Google Sheets / Apps Script</span>
-            <span>JavaScript</span>
-            <span>HTML & CSS</span>
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/revolver3.jpg" alt="3D render of toy revolver side view">
         </div>
-    </section>
 
-    <footer>
-        <p>&copy; 2026 | Portfolio Project</p>
-    </footer>
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/revolver4.jpg" alt="3D render of toy revolver side view">
+        </div>
 
-    <script type="module">
-        import * as THREE from 'three';
-        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        <!-- Video Slide --> 
+        <div class="carousel-img">
+          <div class="video-wrapper">
+            <video controls>
+              <source src="videos/revolver-demo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="play-overlay">▶</div>
+          </div>
+        </div>
+        
 
-        const container = document.getElementById('three-container');
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x151f32); 
+        <!-- 3D Viewer Slide -->
+        <div class="carousel-img active">
+          <model-viewer 
+            src="models/revolver.glb" 
+            alt="Toy Revolver 3D Model"
+            camera-controls
+            auto-rotate
+            shadow-intensity="1"
+            environment-image="neutral"
+            exposure="1"
+            orientation="180deg 0deg 0deg">
+          </model-viewer>
+        </div>
 
-        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-        camera.position.set(5, 2, 5); 
 
-        const renderer = new THREE.WebGLRenderer({ antialias: true });
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.outputColorSpace = THREE.SRGBColorSpace; // Keeps blue grip colors accurate
-        container.appendChild(renderer.domElement);
+        <!-- Navigation buttons -->
+        <button class="prev-btn">‹</button>
+        <button class="next-btn">›</button>
+      </div>
 
-        // Lighting Setup
-        scene.add(new THREE.AmbientLight(0xffffff, 2.0)); 
-        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-        dirLight.position.set(5, 10, 7);
-        scene.add(dirLight);
+      <p class="project-description">
+        Full mechanical assembly designed for FDM 3D printing with functional internal timing.
+      </p>
+    </div>
+  </section>
 
-        // Controls
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.minDistance = 2;   
-        controls.maxDistance = 12;  
-        controls.minPolarAngle = 0; 
-        controls.maxPolarAngle = Math.PI; 
-        controls.enablePan = false; 
+    <!-- SELECTED WORKS (Others) -->
+  <section id="work" class="portfolio">
+    <h2 class="section-title">Other Projects</h2>
 
-        const loader = new GLTFLoader();
-        // REMINDER: Ensure your file is named exactly 'your-model.glb'
-        loader.load('your-model.glb', (gltf) => {
-            const model = gltf.scene;
-            
-            // Adjust this if your CAD model imports upside down
-            model.rotation.x = -Math.PI / 2; 
+    <div class="project-showcase">
+      <div class="image-carousel">
+        
 
-            model.traverse((node) => {
-                if (node.isMesh) {
-                    const edges = new THREE.EdgesGeometry(node.geometry, 25); 
-                    const line = new THREE.LineSegments(
-                        edges, 
-                        new THREE.LineBasicMaterial({ color: 0x000000 }) 
-                    );
-                    node.add(line);
-                    
-                    if (node.material) {
-                        node.material.side = THREE.DoubleSide; 
-                    }
-                }
-            });
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/ran1.jpg" alt="3D render of toy revolver side view">
+        </div>
 
-            scene.add(model);
-            document.getElementById('loading-spinner').style.display = 'none';
-            
-            const box = new THREE.Box3().setFromObject(model);
-            const center = box.getCenter(new THREE.Vector3());
-            controls.target.copy(center);
-        }, undefined, (error) => {
-            console.error('Error loading the GLB model:', error);
-            document.getElementById('loading-spinner').innerText = "Error Loading Model";
-        });
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/ran2.jpg" alt="3D render of toy revolver side view">
+        </div>
 
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            renderer.render(scene, camera);
-        }
-        animate();
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/ran3.jpg" alt="3D render of toy revolver side view">
+        </div>
 
-        window.addEventListener('resize', () => {
-            camera.aspect = container.clientWidth / container.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(container.clientWidth, container.clientHeight);
-        });
-    </script>
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/ran4.jpg" alt="3D render of toy revolver side view">
+        </div>
+
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/ran5.jpg" alt="3D render of toy revolver side view">
+        </div>
+
+        <!-- Image Slide -->
+        <div class="carousel-img">
+          <img src="images/ran6.jpg" alt="3D render of toy revolver side view">
+        </div>
+
+        <!-- Navigation buttons -->
+        <button class="prev-btn">‹</button>
+        <button class="next-btn">›</button>
+      </div>
+
+      <p class="project-description">
+        Full mechanical assembly designed for FDM 3D printing with functional internal timing.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills">
+    <h2 class="section-title">Technical Toolbox</h2>
+    <div class="skills-grid">
+      <span>Siemens Nx</span>
+      <span>SOLIDWORKS</span>
+      <span>Blender 3D</span>
+      <span>Python</span>
+      <span>JavaScript</span>
+      <span>3D Printing/Slicing</span>
+      <span>FEA Simulation</span>
+    </div>
+  </section>
+
+  <!-- ABOUT ME -->
+  <section id="about" class="about">
+    <h2 class="section-title">About Me</h2>
+    
+    <div class="about-container">
+      <img src="images/My-Photo.jpg" alt="Photo of Azzam Daaboul" class="profile-photo">
+
+      <div class="about-text">
+        <p>
+          I am a mechanical engineer, a graduate of Istanbul Bilgi University with professional experience in the manufacturing sector. 
+          I’ve always been driven by the technical "how" behind every mechanism, using hands-on projects to bring ideas to life through CAD and 3D printing.
+        </p>
+        <p>
+          For me, engineering isn't just about the digital model, it's about the challenge of making things work in the real world. 
+          I am constantly looking to push my technical limits and contribute to innovative solutions as I continue to grow and dive deeper into the industry.
+        </p>
+      </div>
+    </div>
+
+    <!-- Resume & Social Links -->
+    <div class="social-links">
+      <a href="Transkript.pdf" target="_blank" class="social-link">📄 Resume</a>
+      <a href="https://www.linkedin.com/in/azzamd/" target="_blank" class="social-link">🔗 LinkedIn</a>
+      <a href="https://www.youtube.com/@Mr.Birunix" target="_blank" class="social-link">▶️ YouTube</a>
+      <a href="javascript:void(0)" onclick="copyEmail()" class="social-link">📧 Gmail</a>
+    </div>
+    <div id="toast">Email copied!</div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2026 Azzam Daaboul | Engineered with Code</p>
+  </footer>
+
+  <!-- Link external JS -->
+  <script src="script.js"></script>
 </body>
 </html>
