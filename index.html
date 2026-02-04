@@ -149,8 +149,9 @@
       <div class="flex items-center gap-8">
         <!-- Desktop Menu -->
         <ul class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-          <li><a href="#work" class="nav-link transition-colors" data-i18n="nav.projects">Projects</a></li>
+          <!-- Reordered: Experience first -->
           <li><a href="#experience" class="nav-link transition-colors" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#work" class="nav-link transition-colors" data-i18n="nav.projects">Projects</a></li>
           <li><a href="#skills" class="nav-link transition-colors" data-i18n="nav.toolbox">Toolbox</a></li>
           <li><a href="#about" class="nav-link transition-colors" data-i18n="nav.about">About</a></li>
         </ul>
@@ -170,8 +171,9 @@
 
     <!-- Mobile Menu Dropdown -->
     <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-brand-surface border-b border-brand-border px-6 py-6 space-y-4 shadow-2xl md:hidden">
-      <a href="#work" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.projects">Projects</a>
+      <!-- Reordered: Experience first -->
       <a href="#experience" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.experience">Experience</a>
+      <a href="#work" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.projects">Projects</a>
       <a href="#skills" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.toolbox">Toolbox</a>
       <a href="#about" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.about">About</a>
     </div>
@@ -208,11 +210,275 @@
     </div>
   </header>
 
-  <!-- PROJECTS SECTION -->
+  <!-- EXPERIENCE SECTION (MOVED TO TOP) -->
+  <section id="experience" class="py-20 bg-brand-bg relative z-10 border-t border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-end gap-4 mb-12">
+        <h2 class="text-4xl font-bold text-white tracking-tight">
+          <!-- Updated Numbering: 01. -->
+          <span class="text-brand-accent">01.</span> <span data-i18n="section.experience">Experience</span>
+        </h2>
+        <div class="h-px bg-slate-800 flex-grow mb-2"></div>
+      </div>
+
+      <!-- Experience Entry 1 -->
+      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative pb-12">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
+        
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp1.title">Mechanical Design Engineer – Plastic Injection Molding</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
+              <span data-i18n="exp1.company">BNM Plastic Folly Life, Istanbul</span>
+              <span class="hidden sm:inline">•</span> 
+              <a href="https://www.folylife.com/" target="_blank" class="text-slate-400 hover:text-white underline text-sm transition-colors">folylife.com</a>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-slate-500 text-sm font-mono">Oct 2024 – Oct 2025</span>
+            </div>
+            
+             <ul class="space-y-2 text-slate-400 list-none">
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp1">Specialized in the design of plastic injection molds based on international standards</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp2">Developed detailed 3D models and technical drawings for complex mold assemblies</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp3">Collaborated with manufacturing teams to ensure feasibility and production accuracy</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp4">Improved design workflows through automation and standardization tools</span></li>
+            </ul>
+        </div>
+
+        <!-- Sub-Projects Stack -->
+        <div class="flex flex-col gap-10">
+          
+          <!-- Sub-Project 1: Cold Runner -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/container1-mold1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold5'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
+                                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/container1-mold1.jpg">
+                                    <source src="videos/container1-mold1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                         <!-- Controls -->
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub1.title">Cold Runner Mold</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Injection Molding</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub1.desc">Plastic injection mold using a cold runner system with 2 cavities and 2 cores, producing 2 identical parts simultaneously.</p>
+                </div>
+            </div>
+          </div>
+
+          <!-- Sub-Project 2: Hot Runner -->
+           <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/container2-mold1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner5'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub2.title">Hot Runner Mold</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Injection Molding</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub2.desc">Plastic injection mold using a hot runner system with 2 cavities and cores, incorporating cavity inserts.</p>
+                </div>
+            </div>
+          </div>
+
+          <!-- Sub-Project 3: Mop -->
+           <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/mop1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop5'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop6.jpg" class="w-full h-full object-contain" alt="View 6" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop6'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub3.title">Mop Stick Design</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Product Design</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub3.desc">Product design of a mop similar to market designs but improved. Designed with proper drafts and tolerances for plastic injection molding.</p>
+                </div>
+            </div>
+          </div>
+
+          <!-- Sub-Project 4: Automation -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/Automation1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Auto1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/Automation2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Auto2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
+                                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/Automation1.jpg">
+                                    <source src="videos/Automation1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub4.title">Plate List Automation</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">NX Open</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub4.desc">Automated the generation of mold plate lists in Siemens NX using NX Open programming. Instead of manually measuring and entering plate dimensions into Excel, the tool allows naming plates via a drop-down menu and generates an Excel sheet automatically with x, y, z dimensions, names, material, and quantity.</p>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Experience Entry 2: Oubari Makina Dizayn -->
+      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative pb-12">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
+        
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp2.title">Mechanical Engineering Intern</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
+              <span data-i18n="exp2.company">Oubari Makina Dizayn, Istanbul</span>
+              <span class="hidden sm:inline">•</span> 
+              <a href="https://oubarimakine.com/" target="_blank" class="text-slate-400 hover:text-white underline text-sm transition-colors">oubarimakine.com</a>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-slate-500 text-sm font-mono">Jul 2024 – Aug 2024</span>
+            </div>
+            
+             <ul class="space-y-2 text-slate-400 list-none">
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp1">Supported the design and modeling of machine components</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp2">Assisted in drafting and technical documentation</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp3">Gained exposure to industrial design processes</span></li>
+            </ul>
+        </div>
+
+        <!-- Sub-Projects Stack -->
+        <div class="flex flex-col gap-10">
+          
+          <!-- Sub-Project 1: Conveyor Belt -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/conveyor1.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt front view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor2.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt side view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor3.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt motor detail" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor4.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt assembly view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor5.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt technical drawing" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+5'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp2.sub1.title">Conveyor Belt (C-50)</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Autodesk Inventor</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp2.sub1.desc">A fully detailed 3D model of the C-50 conveyor belt, designed in Autodesk Inventor for food production lines. The design comprises 106 parts, including real-world components such as the Finex motor. Detailed technical drawings were created for each part, sheet metal components exported as DXF files for laser cutting, and a complete BOM generated for accurate production and assembly.</p>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Experience Entry 3: AME -->
+      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
+        
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp3.title">Mechanical Engineering Intern</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
+              <span data-i18n="exp3.company">Associated Mechanical Engineers (AME), Beirut</span>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-slate-500 text-sm font-mono">Aug 2022 – Sep 2022</span>
+            </div>
+            
+             <ul class="space-y-2 text-slate-400 list-none">
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp3.resp1">Assisted senior engineers in design and documentation tasks</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp3.resp2">Applied basic mechanical principles in hands-on projects</span></li>
+            </ul>
+        </div>
+
+        <!-- Sub-Projects Stack -->
+        <div class="flex flex-col gap-10">
+          
+          <!-- Sub-Project 1: Plumbing Floor Plans -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/plumbing1.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan bathroom layout" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing2.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan villa piping network" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing3.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan rooftop drainage" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing4.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan basement system" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+4'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp3.sub1.title">Plumbing Floor Plans</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">AutoCAD</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp3.sub1.desc">Comprehensive plumbing floor plans for residential projects (bathrooms, villas, houses) created in AutoCAD. Designs included fixture placement, piping networks, drainage systems, rainwater drainage for rooftops and balconies, yard drainage, and main shaft placement. Calculations included flow rates, tube sizing, grease interceptors, and pump selection for basement plumbing systems.</p>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS SECTION (MOVED TO SECOND) -->
   <main id="work" class="max-w-7xl mx-auto px-6 py-20 relative z-10">
     <div class="flex items-end gap-4 mb-16">
       <h2 class="text-4xl font-bold text-white tracking-tight">
-        <span class="text-brand-accent">01.</span> <span data-i18n="section.featured">Featured Projects</span>
+        <!-- Updated Numbering: 02. -->
+        <span class="text-brand-accent">02.</span> <span data-i18n="section.featured">Featured Projects</span>
       </h2>
       <div class="h-px bg-slate-800 flex-grow mb-2"></div>
     </div>
@@ -485,268 +751,6 @@
      </article>
 
   </main>
-
-  <!-- EXPERIENCE SECTION -->
-  <section id="experience" class="py-20 bg-brand-bg relative z-10 border-t border-slate-800/50">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-end gap-4 mb-12">
-        <h2 class="text-4xl font-bold text-white tracking-tight">
-          <span class="text-brand-accent">02.</span> <span data-i18n="section.experience">Experience</span>
-        </h2>
-        <div class="h-px bg-slate-800 flex-grow mb-2"></div>
-      </div>
-
-      <!-- Experience Entry 1 -->
-      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative pb-12">
-        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
-        
-        <div class="mb-12">
-            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp1.title">Mechanical Design Engineer – Plastic Injection Molding</h3>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
-              <span data-i18n="exp1.company">BNM Plastic Folly Life, Istanbul</span>
-              <span class="hidden sm:inline">•</span> 
-              <a href="https://www.folylife.com/" target="_blank" class="text-slate-400 hover:text-white underline text-sm transition-colors">folylife.com</a>
-              <span class="hidden sm:inline">•</span>
-              <span class="text-slate-500 text-sm font-mono">Oct 2024 – Oct 2025</span>
-            </div>
-            
-             <ul class="space-y-2 text-slate-400 list-none">
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp1">Specialized in the design of plastic injection molds based on international standards</span></li>
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp2">Developed detailed 3D models and technical drawings for complex mold assemblies</span></li>
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp3">Collaborated with manufacturing teams to ensure feasibility and production accuracy</span></li>
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp4">Improved design workflows through automation and standardization tools</span></li>
-            </ul>
-        </div>
-
-        <!-- Sub-Projects Stack -->
-        <div class="flex flex-col gap-10">
-          
-          <!-- Sub-Project 1: Cold Runner -->
-          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
-            <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="w-full md:w-1/2">
-                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
-                        <div class="slides-wrapper relative w-full h-full">
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/container1-mold1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold1'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold2'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold3'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold4'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold5'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
-                                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/container1-mold1.jpg">
-                                    <source src="videos/container1-mold1.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                        </div>
-                         <!-- Controls -->
-                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="flex items-center justify-between mb-3">
-                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub1.title">Cold Runner Mold</h4>
-                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Injection Molding</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub1.desc">Plastic injection mold using a cold runner system with 2 cavities and 2 cores, producing 2 identical parts simultaneously.</p>
-                </div>
-            </div>
-          </div>
-
-          <!-- Sub-Project 2: Hot Runner -->
-           <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
-            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                <div class="w-full md:w-1/2">
-                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
-                        <div class="slides-wrapper relative w-full h-full">
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/container2-mold1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner1'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner2'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner3'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner4'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner5'"></div>
-                        </div>
-                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="flex items-center justify-between mb-3">
-                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub2.title">Hot Runner Mold</h4>
-                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Injection Molding</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub2.desc">Plastic injection mold using a hot runner system with 2 cavities and cores, incorporating cavity inserts.</p>
-                </div>
-            </div>
-          </div>
-
-          <!-- Sub-Project 3: Mop -->
-           <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
-            <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="w-full md:w-1/2">
-                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
-                        <div class="slides-wrapper relative w-full h-full">
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/mop1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop1'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop2'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop3'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop4'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop5'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop6.jpg" class="w-full h-full object-contain" alt="View 6" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop6'"></div>
-                        </div>
-                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="flex items-center justify-between mb-3">
-                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub3.title">Mop Stick Design</h4>
-                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Product Design</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub3.desc">Product design of a mop similar to market designs but improved. Designed with proper drafts and tolerances for plastic injection molding.</p>
-                </div>
-            </div>
-          </div>
-
-          <!-- Sub-Project 4: Automation -->
-          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
-            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
-                <div class="w-full md:w-1/2">
-                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
-                        <div class="slides-wrapper relative w-full h-full">
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/Automation1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Auto1'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/Automation2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Auto2'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
-                                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/Automation1.jpg">
-                                    <source src="videos/Automation1.mp4" type="video/mp4">
-                                </video>
-                            </div>
-                        </div>
-                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="flex items-center justify-between mb-3">
-                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub4.title">Plate List Automation</h4>
-                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">NX Open</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub4.desc">Automated the generation of mold plate lists in Siemens NX using NX Open programming. Instead of manually measuring and entering plate dimensions into Excel, the tool allows naming plates via a drop-down menu and generates an Excel sheet automatically with x, y, z dimensions, names, material, and quantity.</p>
-                </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Experience Entry 2: Oubari Makina Dizayn -->
-      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative pb-12">
-        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
-        
-        <div class="mb-12">
-            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp2.title">Mechanical Engineering Intern</h3>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
-              <span data-i18n="exp2.company">Oubari Makina Dizayn, Istanbul</span>
-              <span class="hidden sm:inline">•</span> 
-              <a href="https://oubarimakine.com/" target="_blank" class="text-slate-400 hover:text-white underline text-sm transition-colors">oubarimakine.com</a>
-              <span class="hidden sm:inline">•</span>
-              <span class="text-slate-500 text-sm font-mono">Jul 2024 – Aug 2024</span>
-            </div>
-            
-             <ul class="space-y-2 text-slate-400 list-none">
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp1">Supported the design and modeling of machine components</span></li>
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp2">Assisted in drafting and technical documentation</span></li>
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp3">Gained exposure to industrial design processes</span></li>
-            </ul>
-        </div>
-
-        <!-- Sub-Projects Stack -->
-        <div class="flex flex-col gap-10">
-          
-          <!-- Sub-Project 1: Conveyor Belt -->
-          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
-            <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="w-full md:w-1/2">
-                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
-                        <div class="slides-wrapper relative w-full h-full">
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/conveyor1.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt front view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+1'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor2.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt side view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+2'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor3.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt motor detail" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+3'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor4.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt assembly view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+4'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor5.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt technical drawing" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+5'"></div>
-                        </div>
-                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="flex items-center justify-between mb-3">
-                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp2.sub1.title">Conveyor Belt (C-50)</h4>
-                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Autodesk Inventor</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp2.sub1.desc">A fully detailed 3D model of the C-50 conveyor belt, designed in Autodesk Inventor for food production lines. The design comprises 106 parts, including real-world components such as the Finex motor. Detailed technical drawings were created for each part, sheet metal components exported as DXF files for laser cutting, and a complete BOM generated for accurate production and assembly.</p>
-                </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Experience Entry 3: AME -->
-      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative">
-        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
-        
-        <div class="mb-12">
-            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp3.title">Mechanical Engineering Intern</h3>
-            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
-              <span data-i18n="exp3.company">Associated Mechanical Engineers (AME), Beirut</span>
-              <span class="hidden sm:inline">•</span>
-              <span class="text-slate-500 text-sm font-mono">Aug 2022 – Sep 2022</span>
-            </div>
-            
-             <ul class="space-y-2 text-slate-400 list-none">
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp3.resp1">Assisted senior engineers in design and documentation tasks</span></li>
-              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp3.resp2">Applied basic mechanical principles in hands-on projects</span></li>
-            </ul>
-        </div>
-
-        <!-- Sub-Projects Stack -->
-        <div class="flex flex-col gap-10">
-          
-          <!-- Sub-Project 1: Plumbing Floor Plans -->
-          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
-            <div class="flex flex-col md:flex-row gap-8 items-center">
-                <div class="w-full md:w-1/2">
-                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
-                        <div class="slides-wrapper relative w-full h-full">
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/plumbing1.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan bathroom layout" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+1'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing2.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan villa piping network" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+2'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing3.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan rooftop drainage" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+3'"></div>
-                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing4.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan basement system" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+4'"></div>
-                        </div>
-                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
-                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
-                    </div>
-                </div>
-                <div class="w-full md:w-1/2">
-                    <div class="flex items-center justify-between mb-3">
-                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp3.sub1.title">Plumbing Floor Plans</h4>
-                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">AutoCAD</span>
-                    </div>
-                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp3.sub1.desc">Comprehensive plumbing floor plans for residential projects (bathrooms, villas, houses) created in AutoCAD. Designs included fixture placement, piping networks, drainage systems, rainwater drainage for rooftops and balconies, yard drainage, and main shaft placement. Calculations included flow rates, tube sizing, grease interceptors, and pump selection for basement plumbing systems.</p>
-                </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- SKILLS SECTION -->
   <section id="skills" class="py-20 bg-brand-surface border-t border-slate-800/50">
