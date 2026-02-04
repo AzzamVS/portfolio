@@ -1,198 +1,1270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Azzam Daaboul - Mechanical Design Engineer specializing in CAD, 3D Printing, and Product Design.">
   <title>Azzam Daaboul | Engineering & Design</title>
-  <link rel="stylesheet" href="style.css">
-
-  <!-- model-viewer library for 3D models -->
+  
+  <!-- Google Fonts: Inter for UI, JetBrains Mono for code/technical details -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+  <!-- Icons (Lucide) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+          mono: ['JetBrains Mono', 'monospace'],
+        },
+        extend: {
+          colors: {
+            brand: {
+              bg: '#0B1120',      /* Deepest Slate */
+              surface: '#162032', /* Surface Slate */
+              border: '#334155',  /* Border Slate */
+              accent: '#2dd4bf',  /* Teal 400 */
+              accentDim: 'rgba(45, 212, 191, 0.1)',
+              text: '#f8fafc',    /* Slate 50 */
+              muted: '#94a3b8',   /* Slate 400 */
+            }
+          },
+          animation: {
+            'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Technical Grid Background */
+    .bg-grid-pattern {
+      background-size: 50px 50px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B1120;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #2dd4bf;
+    }
+
+    /* Model Viewer */
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+      --progress-bar-color: #2dd4bf;
+      --progress-mask: #0B1120;
+    }
+
+    /* Utilities */
+    .text-shadow-glow {
+      text-shadow: 0 0 20px rgba(45, 212, 191, 0.3);
+    }
+    
+    .glass-panel {
+      background: rgba(30, 41, 59, 0.6);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Navigation Link Active State */
+    .nav-link.active {
+      color: #2dd4bf;
+    }
+    .nav-link.active::after {
+      width: 100%;
+    }
+    .nav-link::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #2dd4bf;
+      transition: width 0.3s;
+      margin-top: 2px;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
 </head>
 
-<body>
+<body class="bg-brand-bg text-brand-text antialiased selection:bg-brand-accent selection:text-brand-bg relative overflow-x-hidden">
+
+  <!-- Background Grid -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute inset-0 bg-grid-pattern opacity-60"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-brand-accent/10 rounded-full blur-[120px]"></div>
+  </div>
 
   <!-- NAVIGATION -->
-  <nav aria-label="Main navigation">
-    <div class="logo">AZZAM<span>.</span>ENGINEERING</div>
-    <ul>
-      <li><a href="#work">Projects</a></li>
-      <li><a href="#skills">Toolbox</a></li>
-      <li><a href="#about">About Me</a></li>
-    </ul>
+  <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+      <!-- Logo -->
+      <a href="#" class="group flex items-center gap-2 z-50">
+        <div class="w-8 h-8 bg-brand-accent rounded flex items-center justify-center text-brand-bg font-bold font-mono group-hover:shadow-[0_0_15px_rgba(45,212,191,0.5)] transition-shadow">
+          AD
+        </div>
+        <span class="text-lg font-bold tracking-wide group-hover:text-brand-accent transition-colors">
+          AZZAM<span class="text-brand-accent">.</span>ENG
+        </span>
+      </a>
+      
+      <div class="flex items-center gap-8">
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+          <li><a href="#work" class="nav-link transition-colors" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#experience" class="nav-link transition-colors" data-i18n="nav.experience">Experience</a></li>
+          <li><a href="#skills" class="nav-link transition-colors" data-i18n="nav.toolbox">Toolbox</a></li>
+          <li><a href="#about" class="nav-link transition-colors" data-i18n="nav.about">About</a></li>
+        </ul>
+
+        <!-- Language Toggle -->
+        <button onclick="toggleLanguage()" class="flex items-center gap-2 text-xs font-bold border border-slate-700 bg-slate-900/50 rounded-md px-3 py-1.5 text-slate-300 hover:border-brand-accent hover:text-brand-accent transition-all backdrop-blur-sm">
+          <i data-lucide="globe" class="w-3 h-3"></i>
+          <span id="lang-display">EN</span>
+        </button>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()">
+          <i data-lucide="menu"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Dropdown -->
+    <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-brand-surface border-b border-brand-border px-6 py-6 space-y-4 shadow-2xl md:hidden">
+      <a href="#work" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.projects">Projects</a>
+      <a href="#experience" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.experience">Experience</a>
+      <a href="#skills" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.toolbox">Toolbox</a>
+      <a href="#about" class="block text-lg font-medium text-slate-300 hover:text-brand-accent" onclick="toggleMobileMenu()" data-i18n="nav.about">About</a>
+    </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <h1>Mechanical Engineer <br>& <span class="highlight">CAD Specialist</span></h1>
-    <p>Designing functional assemblies, 3D printing solutions, and web-based engineering tools.</p>
+  <!-- HERO SECTION -->
+  <header class="relative pt-48 pb-32 px-6 text-center z-10">
+    <div class="max-w-5xl mx-auto animate-fade-in-up">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-brand-accent/30 bg-brand-accent/5 text-brand-accent text-xs font-mono tracking-wider uppercase backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-brand-accent animate-pulse"></span>
+        <span data-i18n="hero.status">Available for Hire</span>
+      </div>
+      
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-[1.1]">
+        <span data-i18n="hero.title1" class="text-white">Mechanical Engineer</span>
+        <br>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-teal-100 text-shadow-glow" data-i18n="hero.title2">CAD Specialist</span>
+      </h1>
+      
+      <p class="text-lg md:text-xl text-brand-muted max-w-2xl mx-auto mb-12 leading-relaxed font-light" data-i18n="hero.description">
+        Designing functional assemblies, engineering 3D printing solutions, and building web-based engineering tools. Bridging the gap between digital design and physical reality.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row justify-center gap-5">
+        <a href="#work" class="group px-8 py-4 rounded-lg bg-brand-accent text-brand-bg font-bold hover:bg-teal-300 transition-all shadow-[0_0_20px_rgba(45,212,191,0.2)] hover:shadow-[0_0_30px_rgba(45,212,191,0.4)] flex items-center justify-center gap-2">
+          <span data-i18n="btn.viewProjects">View Projects</span>
+          <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+        </a>
+        <a href="#about" class="px-8 py-4 rounded-lg border border-slate-600 hover:border-brand-accent hover:text-brand-accent transition-all bg-slate-800/30 backdrop-blur-sm flex items-center justify-center gap-2" data-i18n="btn.aboutMe">
+          <i data-lucide="user" class="w-4 h-4"></i>
+          <span data-i18n="btn.aboutMe">About Me</span>
+        </a>
+      </div>
+    </div>
   </header>
 
-  <!-- SELECTED WORKS (revolver) -->
-  <section id="work" class="portfolio">
-    <h2 class="section-title">Toy Revolver Design</h2>
+  <!-- PROJECTS SECTION -->
+  <main id="work" class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+    <div class="flex items-end gap-4 mb-16">
+      <h2 class="text-4xl font-bold text-white tracking-tight">
+        <span class="text-brand-accent">01.</span> <span data-i18n="section.featured">Featured Projects</span>
+      </h2>
+      <div class="h-px bg-slate-800 flex-grow mb-2"></div>
+    </div>
 
-    <div class="project-showcase">
-      <div class="image-carousel">
-        
-
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/revolver1.jpg" alt="3D render of toy revolver side view">
-        </div>
-
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/revolver2.jpg" alt="3D render of toy revolver side view">
-        </div>
-
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/revolver3.jpg" alt="3D render of toy revolver side view">
-        </div>
-
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/revolver4.jpg" alt="3D render of toy revolver side view">
-        </div>
-
-        <!-- Video Slide --> 
-        <div class="carousel-img">
-          <div class="video-wrapper">
-            <video controls>
-              <source src="videos/revolver-demo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            <div class="play-overlay">▶</div>
+    <!-- PROJECT 1: Revolver (Right Text) -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row gap-10">
+        <!-- Carousel Container -->
+        <div class="w-full lg:w-7/12 relative group">
+          <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container shadow-inner" id="carousel-revolver">
+            <div class="slides-wrapper relative w-full h-full">
+              <!-- Slide 1 -->
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/revolver1.jpg" class="w-full h-full object-contain" alt="Revolver Design 1" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Revolver+View+1'"></div>
+              <!-- Slide 2 -->
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/revolver2.jpg" class="w-full h-full object-contain" alt="Revolver Design 2" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Revolver+View+2'"></div>
+              <!-- Slide 3 -->
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/revolver3.jpg" class="w-full h-full object-contain" alt="Revolver Design 3" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Revolver+View+3'"></div>
+               <!-- Slide 4 -->
+               <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/revolver4.jpg" class="w-full h-full object-contain" alt="Revolver Design 4" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Revolver+View+4'"></div>
+              <!-- Slide 5: Video -->
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
+                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/revolver1.jpg">
+                  <source src="videos/revolver-demo.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+              <!-- Slide 6: 3D Model -->
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-gradient-to-b from-slate-900 to-slate-950">
+                <model-viewer id="viewer-revolver" src="models/revolver.glb" alt="Toy Revolver 3D Model" camera-controls auto-rotate shadow-intensity="1" exposure="1" orientation="180deg 0deg 0deg" loading="lazy">
+                  <div class="w-full h-full flex items-center justify-center text-slate-500" slot="poster" data-i18n="viewer.loading">Loading 3D Model...</div>
+                </model-viewer>
+                <div class="absolute bottom-4 left-4 bg-brand-accent/20 border border-brand-accent/30 px-3 py-1.5 rounded-md text-xs text-brand-accent backdrop-blur-md pointer-events-none font-mono flex items-center gap-2">
+                    <i data-lucide="box" class="w-3 h-3"></i> <span data-i18n="viewer.label">Interactive 3D View</span>
+                </div>
+              </div>
+            </div>
+            <!-- Controls -->
+            <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+            <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
           </div>
         </div>
         
+        <!-- Project Details -->
+        <div class="w-full lg:w-5/12 flex flex-col">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="px-3 py-1 rounded-full bg-brand-accent/10 text-brand-accent text-xs font-bold tracking-wider uppercase border border-brand-accent/20" data-i18n="proj1.category">Mechanical Design</span>
+            <span class="h-px bg-slate-700 flex-grow"></span>
+          </div>
+          
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj1.title">3D-Printed Toy Revolver (Functional Prototype)</h3>
+          
+          <p class="text-slate-400 mb-6 leading-relaxed" data-i18n="proj1.desc">A fully 3D-printed, functional toy revolver designed to fire plastic toy bullets with accurate mechanical timing. The project focuses on realistic revolver kinematics while remaining safe, lightweight, and easy to assemble. All components were optimized for desktop 3D printing without metal parts or external hardware. This prototype is part of a larger concept: a fully 3D-printed revolver powered entirely by elastic rubber bands.</p>
+          
+          <div class="flex flex-wrap gap-2 mb-auto">
+            <span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span>
+            <span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono" data-i18n="tag.fdm">FDM Printing</span>
+            <span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono" data-i18n="tag.proto">Prototyping</span>
+          </div>
 
-        <!-- 3D Viewer Slide -->
-        <div class="carousel-img active">
-          <model-viewer 
-            src="models/revolver.glb" 
-            alt="Toy Revolver 3D Model"
-            camera-controls
-            auto-rotate
-            shadow-intensity="1"
-            environment-image="neutral"
-            exposure="1"
-            orientation="180deg 0deg 0deg">
-          </model-viewer>
+          <!-- Disclaimer styled as a tech note -->
+          <div class="mt-6 flex gap-3 p-3 bg-red-900/10 border border-red-500/20 rounded text-red-200/60 text-[10px] leading-tight items-start">
+             <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+             <p data-i18n="proj1.disclaimer">Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.</p>
+          </div>
         </div>
+      </div>
+    </article>
 
+    <!-- PROJECT 2: Altor Pistol (Left Text) -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row-reverse gap-10">
+        <div class="w-full lg:w-7/12 relative group">
+          <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container" id="carousel-altor">
+            <div class="slides-wrapper relative w-full h-full">
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/altor1.jpg" class="w-full h-full object-contain" alt="Altor Pistol front view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Altor+Front+View'"></div>
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/altor2.jpg" class="w-full h-full object-contain" alt="Altor Pistol side view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Altor+Side+View'"></div>
+            </div>
+            <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+            <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
+          </div>
+        </div>
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <div class="text-brand-accent text-xs font-bold tracking-wider mb-2 uppercase font-mono" data-i18n="proj_altor.category">Mechanical Design</div>
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj_altor.title">Altor Pistol</h3>
+          <p class="text-slate-400 mb-6 leading-relaxed" data-i18n="proj_altor.desc">A compact, single-shot pistol project showcasing mechanical design and prototyping.</p>
+          <div class="flex flex-wrap gap-2 mb-6"><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span></div>
+          
+          <div class="mt-auto flex gap-3 p-3 bg-red-900/10 border border-red-500/20 rounded text-red-200/60 text-[10px] leading-tight items-start">
+             <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+             <p data-i18n="proj_altor.disclaimer">Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.</p>
+          </div>
+        </div>
+      </div>
+    </article>
 
-        <!-- Navigation buttons -->
-        <button class="prev-btn">‹</button>
-        <button class="next-btn">›</button>
+    <!-- PROJECT 3: Bullet (Right Text) -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row gap-10">
+        <div class="w-full lg:w-7/12 relative group">
+          <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container" id="carousel-bullet" data-desc-target="desc-bullet">
+            <div class="slides-wrapper relative w-full h-full">
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/bullet1.jpg" class="w-full h-full object-contain" alt="Spring powered plastic bullet front view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Bullet+Front+View'"></div>
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/bullet2.jpg" class="w-full h-full object-contain" alt="Spring powered plastic bullet side view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Bullet+Side+View'"></div>
+              <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black" data-override-key="proj_bullet.desc_anim">
+                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/bullet1.jpg">
+                  <source src="videos/bullet1.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+               <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
+                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/bullet2.jpg">
+                  <source src="videos/bullet2.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            </div>
+            <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+            <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
+          </div>
+        </div>
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <div class="text-brand-accent text-xs font-bold tracking-wider mb-2 uppercase font-mono" data-i18n="proj_bullet.category">Prototyping & Animation</div>
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj_bullet.title">Spring Powered Plastic Bullet</h3>
+          <p class="text-slate-400 mb-6 leading-relaxed min-h-[5rem] transition-all duration-300" id="desc-bullet" data-i18n="proj_bullet.desc">This is a 3D printed plastic bullet powered by a spring connected to the bullet head. When the primer is compressed, it releases the bullet head.</p>
+          <div class="flex flex-wrap gap-2"><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono" data-i18n="tag.fdm">FDM Printing</span><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">Blender</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 4: Toothbrush Holder (Left Text) - Converted from Grid -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row-reverse gap-10">
+        <div class="w-full lg:w-7/12 relative group">
+            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container" id="carousel-toothbrush">
+                <div class="slides-wrapper relative w-full h-full">
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/toothbrush-holder1.jpg" class="w-full h-full object-contain" alt="Toothbrush holder front view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Toothbrush+Holder+Front'"></div>
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/toothbrush-holder2.jpg" class="w-full h-full object-contain" alt="Toothbrush holder side view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Toothbrush+Holder+Side'"></div>
+                </div>
+                <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+                <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
+            </div>
+        </div>
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <div class="text-brand-accent text-xs font-bold tracking-wider mb-2 uppercase font-mono" data-i18n="proj_tb.category">Product Design</div>
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj_tb.title">Toothbrush Holder</h3>
+          <p class="text-slate-400 mb-6 leading-relaxed" data-i18n="proj_tb.desc">A simple 2-piece brush holder that sticks to the wall. It holds the toothbrush from the neck, solving the problem of cups or original holders that collect water residue at the bottom.</p>
+          <div class="flex flex-wrap gap-2 mb-6"><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono" data-i18n="tag.fdm">FDM Printing</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 5: Browning (Right Text) - Converted from Grid -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row gap-10">
+        <div class="w-full lg:w-7/12 relative group">
+            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container" id="carousel-browning">
+                <div class="slides-wrapper relative w-full h-full">
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/1879-Browning lever action1.jpg" class="w-full h-full object-contain" alt="Browning 1879 lever action rifle front view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Browning+Front+View'"></div>
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/1879-Browning lever action2.jpg" class="w-full h-full object-contain" alt="Browning 1879 lever action rifle side view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Browning+Side+View'"></div>
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/1879-Browning lever action3.jpg" class="w-full h-full object-contain" alt="Browning 1879 lever action rifle mechanism detail" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Browning+Mechanism'"></div>
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/1879-Browning lever action4.jpg" class="w-full h-full object-contain" alt="Browning 1879 lever action rifle view 4" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Browning+View+4'"></div>
+                </div>
+                <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+                <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
+            </div>
+        </div>
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <div class="text-brand-accent text-xs font-bold tracking-wider mb-2 uppercase font-mono" data-i18n="proj_browning.category">Mechanical Design</div>
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj_browning.title">Browning 1879</h3>
+          <p class="text-slate-400 mb-6 leading-relaxed" data-i18n="proj_browning.desc">A detailed design of the first patent by the legendary John Moses Browning.</p>
+          <div class="flex flex-wrap gap-2 mb-6"><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span></div>
+          <div class="mt-auto flex gap-3 p-3 bg-red-900/10 border border-red-500/20 rounded text-red-200/60 text-[10px] leading-tight items-start">
+             <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+             <p data-i18n="proj_browning.disclaimer">Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 6: M4 (Left Text) - Converted from Grid -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row-reverse gap-10">
+        <div class="w-full lg:w-7/12 relative group">
+            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container" id="carousel-m4">
+                <div class="slides-wrapper relative w-full h-full">
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/m4-1.jpg" class="w-full h-full object-contain" alt="M4 rifle front view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=M4+Front+View'"></div>
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/m4-2.jpg" class="w-full h-full object-contain" alt="M4 rifle internal mechanism view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=M4+Internal+View'"></div>
+                </div>
+                <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+                <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
+            </div>
+        </div>
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <div class="text-brand-accent text-xs font-bold tracking-wider mb-2 uppercase font-mono" data-i18n="proj_m4.category">Mechanical Design</div>
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj_m4.title">M4 Rifle</h3>
+          <p class="text-slate-400 mb-6 leading-relaxed" data-i18n="proj_m4.desc">A 3D design of the famous M4 rifle that shows the internal mechanism of the weapon.</p>
+          <div class="flex flex-wrap gap-2 mb-6"><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span></div>
+          <div class="mt-auto flex gap-3 p-3 bg-red-900/10 border border-red-500/20 rounded text-red-200/60 text-[10px] leading-tight items-start">
+             <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+             <p data-i18n="proj_m4.disclaimer">Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- PROJECT 7: Luty (Right Text) - Converted from Grid -->
+    <article class="glass-panel rounded-3xl p-6 md:p-8 mb-20 hover:border-brand-accent/30 transition-colors duration-500 shadow-2xl">
+      <div class="flex flex-col lg:flex-row gap-10">
+        <div class="w-full lg:w-7/12 relative group">
+            <div class="relative w-full aspect-video bg-black rounded-xl overflow-hidden border border-slate-800 carousel-container" id="carousel-luty">
+                <div class="slides-wrapper relative w-full h-full">
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/luty smg1.jpg" class="w-full h-full object-contain" alt="Luty SMG front view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Luty+Front+View'"></div>
+                    <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/luty smg2.jpg" class="w-full h-full object-contain" alt="Luty SMG internal mechanism view" onerror="this.src='https://placehold.co/800x450/0f172a/2dd4bf?text=Luty+Internal+View'"></div>
+                </div>
+                <button class="prev-btn absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+                <button class="next-btn absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+                <div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex space-x-2 z-20 indicators p-2 bg-black/40 backdrop-blur rounded-full"></div>
+            </div>
+        </div>
+        <div class="w-full lg:w-5/12 flex flex-col justify-center">
+          <div class="text-brand-accent text-xs font-bold tracking-wider mb-2 uppercase font-mono" data-i18n="proj_luty.category">Mechanical Design</div>
+          <h3 class="text-3xl font-bold mb-4 text-white" data-i18n="proj_luty.title">Luty SMG</h3>
+          <p class="text-slate-400 mb-6 leading-relaxed" data-i18n="proj_luty.desc">An SMG designed by Mr. Philip Luty as a demonstration for English gun rights activism.</p>
+          <div class="flex flex-wrap gap-2 mb-6"><span class="px-3 py-1 rounded border border-slate-700 text-xs text-slate-300 font-mono">SolidWorks</span></div>
+          <div class="mt-auto flex gap-3 p-3 bg-red-900/10 border border-red-500/20 rounded text-red-200/60 text-[10px] leading-tight items-start">
+             <i data-lucide="alert-triangle" class="w-4 h-4 shrink-0 mt-0.5"></i>
+             <p data-i18n="proj_luty.disclaimer">Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- OTHER WORKS GALLERY -->
+     <article class="glass-panel rounded-3xl p-8 border border-slate-800 relative overflow-hidden">
+        <div class="absolute top-0 right-0 p-8 opacity-10">
+            <i data-lucide="grid" class="w-32 h-32"></i>
+        </div>
+        <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+            <div class="w-full md:w-1/2">
+                <h3 class="text-2xl font-bold mb-4 text-white" data-i18n="proj2.title">Other Engineering Works</h3>
+                <p class="text-slate-400 mb-6" data-i18n="proj2.desc">A collection of miscellaneous CAD projects ranging from consumer product concepts to industrial equipment parts. These projects highlight versatility in surfacing, complex assembly management, and rendering.</p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs text-slate-300">Blender</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs text-slate-300">Siemens NX</span>
+                    <span class="px-3 py-1 rounded-full bg-slate-800 text-xs text-slate-300" data-i18n="tag.render">Rendering</span>
+                </div>
+            </div>
+             <div class="w-full md:w-1/2">
+                 <div class="relative group w-full aspect-video bg-black rounded-lg overflow-hidden border border-slate-700 carousel-container" id="carousel-other">
+                    <div class="slides-wrapper relative w-full h-full">
+                      <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/ran1.jpg" class="w-full h-full object-contain" alt="Project 1" onerror="this.src='https://placehold.co/600x400/0f172a/2dd4bf?text=Misc+1'"></div>
+                      <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/ran2.jpg" class="w-full h-full object-contain" alt="Project 2" onerror="this.src='https://placehold.co/600x400/0f172a/2dd4bf?text=Misc+2'"></div>
+                      <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/ran3.jpg" class="w-full h-full object-contain" alt="Project 3" onerror="this.src='https://placehold.co/600x400/0f172a/2dd4bf?text=Misc+3'"></div>
+                      <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/ran4.jpg" class="w-full h-full object-contain" alt="Project 4" onerror="this.src='https://placehold.co/600x400/0f172a/2dd4bf?text=Misc+4'"></div>
+                      <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/ran5.jpg" class="w-full h-full object-contain" alt="Project 5" onerror="this.src='https://placehold.co/600x400/0f172a/2dd4bf?text=Misc+5'"></div>
+                      <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/ran6.jpg" class="w-full h-full object-contain" alt="Project 6" onerror="this.src='https://placehold.co/600x400/0f172a/2dd4bf?text=Misc+6'"></div>
+                    </div>
+                    <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left"></i></button>
+                    <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right"></i></button>
+                    <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                  </div>
+             </div>
+        </div>
+     </article>
+
+  </main>
+
+  <!-- EXPERIENCE SECTION -->
+  <section id="experience" class="py-20 bg-brand-bg relative z-10 border-t border-slate-800/50">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-end gap-4 mb-12">
+        <h2 class="text-4xl font-bold text-white tracking-tight">
+          <span class="text-brand-accent">02.</span> <span data-i18n="section.experience">Experience</span>
+        </h2>
+        <div class="h-px bg-slate-800 flex-grow mb-2"></div>
       </div>
 
-      <p class="project-description">
-        Full mechanical assembly designed for FDM 3D printing with functional internal timing.
-      </p>
-    </div>
-  </section>
-
-    <!-- SELECTED WORKS (Others) -->
-  <section id="work" class="portfolio">
-    <h2 class="section-title">Other Projects</h2>
-
-    <div class="project-showcase">
-      <div class="image-carousel">
+      <!-- Experience Entry 1 -->
+      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative pb-12">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
         
-
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/ran1.jpg" alt="3D render of toy revolver side view">
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp1.title">Mechanical Design Engineer – Plastic Injection Molding</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
+              <span data-i18n="exp1.company">BNM Plastic Folly Life, Istanbul</span>
+              <span class="hidden sm:inline">•</span> 
+              <a href="https://www.folylife.com/" target="_blank" class="text-slate-400 hover:text-white underline text-sm transition-colors">folylife.com</a>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-slate-500 text-sm font-mono">Oct 2024 – Oct 2025</span>
+            </div>
+            
+             <ul class="space-y-2 text-slate-400 list-none">
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp1">Specialized in the design of plastic injection molds based on international standards</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp2">Developed detailed 3D models and technical drawings for complex mold assemblies</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp3">Collaborated with manufacturing teams to ensure feasibility and production accuracy</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp1.resp4">Improved design workflows through automation and standardization tools</span></li>
+            </ul>
         </div>
 
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/ran2.jpg" alt="3D render of toy revolver side view">
-        </div>
+        <!-- Sub-Projects Stack -->
+        <div class="flex flex-col gap-10">
+          
+          <!-- Sub-Project 1: Cold Runner -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/container1-mold1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container1-mold5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mold5'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
+                                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/container1-mold1.jpg">
+                                    <source src="videos/container1-mold1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                         <!-- Controls -->
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub1.title">Cold Runner Mold</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Injection Molding</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub1.desc">Plastic injection mold using a cold runner system with 2 cavities and 2 cores, producing 2 identical parts simultaneously.</p>
+                </div>
+            </div>
+          </div>
 
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/ran3.jpg" alt="3D render of toy revolver side view">
-        </div>
+          <!-- Sub-Project 2: Hot Runner -->
+           <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/container2-mold1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/container2-mold5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=HotRunner5'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub2.title">Hot Runner Mold</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Injection Molding</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub2.desc">Plastic injection mold using a hot runner system with 2 cavities and cores, incorporating cavity inserts.</p>
+                </div>
+            </div>
+          </div>
 
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/ran4.jpg" alt="3D render of toy revolver side view">
-        </div>
+          <!-- Sub-Project 3: Mop -->
+           <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/mop1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop3.jpg" class="w-full h-full object-contain" alt="View 3" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop4.jpg" class="w-full h-full object-contain" alt="View 4" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop5.jpg" class="w-full h-full object-contain" alt="View 5" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop5'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/mop6.jpg" class="w-full h-full object-contain" alt="View 6" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Mop6'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub3.title">Mop Stick Design</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Product Design</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub3.desc">Product design of a mop similar to market designs but improved. Designed with proper drafts and tolerances for plastic injection molding.</p>
+                </div>
+            </div>
+          </div>
 
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/ran5.jpg" alt="3D render of toy revolver side view">
-        </div>
+          <!-- Sub-Project 4: Automation -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row-reverse gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/Automation1.jpg" class="w-full h-full object-contain" alt="View 1" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Auto1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/Automation2.jpg" class="w-full h-full object-contain" alt="View 2" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Auto2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0 bg-black">
+                                <video class="w-full h-full object-contain" controls preload="metadata" poster="images/Automation1.jpg">
+                                    <source src="videos/Automation1.mp4" type="video/mp4">
+                                </video>
+                            </div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp1.sub4.title">Plate List Automation</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">NX Open</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp1.sub4.desc">Automated the generation of mold plate lists in Siemens NX using NX Open programming. Instead of manually measuring and entering plate dimensions into Excel, the tool allows naming plates via a drop-down menu and generates an Excel sheet automatically with x, y, z dimensions, names, material, and quantity.</p>
+                </div>
+            </div>
+          </div>
 
-        <!-- Image Slide -->
-        <div class="carousel-img">
-          <img src="images/ran6.jpg" alt="3D render of toy revolver side view">
         </div>
-
-        <!-- Navigation buttons -->
-        <button class="prev-btn">‹</button>
-        <button class="next-btn">›</button>
       </div>
 
-      <p class="project-description">
-        Full mechanical assembly designed for FDM 3D printing with functional internal timing.
-      </p>
+      <!-- Experience Entry 2: Oubari Makina Dizayn -->
+      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative pb-12">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
+        
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp2.title">Mechanical Engineering Intern</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
+              <span data-i18n="exp2.company">Oubari Makina Dizayn, Istanbul</span>
+              <span class="hidden sm:inline">•</span> 
+              <a href="https://oubarimakine.com/" target="_blank" class="text-slate-400 hover:text-white underline text-sm transition-colors">oubarimakine.com</a>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-slate-500 text-sm font-mono">Jul 2024 – Aug 2024</span>
+            </div>
+            
+             <ul class="space-y-2 text-slate-400 list-none">
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp1">Supported the design and modeling of machine components</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp2">Assisted in drafting and technical documentation</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp2.resp3">Gained exposure to industrial design processes</span></li>
+            </ul>
+        </div>
+
+        <!-- Sub-Projects Stack -->
+        <div class="flex flex-col gap-10">
+          
+          <!-- Sub-Project 1: Conveyor Belt -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/conveyor1.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt front view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor2.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt side view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor3.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt motor detail" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor4.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt assembly view" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+4'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/conveyor5.jpg" class="w-full h-full object-contain" alt="C-50 conveyor belt technical drawing" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Conveyor+5'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp2.sub1.title">Conveyor Belt (C-50)</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">Autodesk Inventor</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp2.sub1.desc">A fully detailed 3D model of the C-50 conveyor belt, designed in Autodesk Inventor for food production lines. The design comprises 106 parts, including real-world components such as the Finex motor. Detailed technical drawings were created for each part, sheet metal components exported as DXF files for laser cutting, and a complete BOM generated for accurate production and assembly.</p>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Experience Entry 3: AME -->
+      <div class="border-l-2 border-slate-800 pl-8 ml-4 md:ml-0 relative">
+        <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-accent border-4 border-brand-bg"></div>
+        
+        <div class="mb-12">
+            <h3 class="text-2xl font-bold text-white mb-1" data-i18n="exp3.title">Mechanical Engineering Intern</h3>
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 text-brand-accent font-medium mb-4">
+              <span data-i18n="exp3.company">Associated Mechanical Engineers (AME), Beirut</span>
+              <span class="hidden sm:inline">•</span>
+              <span class="text-slate-500 text-sm font-mono">Aug 2022 – Sep 2022</span>
+            </div>
+            
+             <ul class="space-y-2 text-slate-400 list-none">
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp3.resp1">Assisted senior engineers in design and documentation tasks</span></li>
+              <li class="flex items-start"><i data-lucide="chevron-right" class="w-4 h-4 text-brand-accent mr-2 mt-1"></i> <span data-i18n="exp3.resp2">Applied basic mechanical principles in hands-on projects</span></li>
+            </ul>
+        </div>
+
+        <!-- Sub-Projects Stack -->
+        <div class="flex flex-col gap-10">
+          
+          <!-- Sub-Project 1: Plumbing Floor Plans -->
+          <div class="glass-panel p-6 rounded-2xl border border-slate-700/50 hover:bg-slate-800/80 transition-all">
+            <div class="flex flex-col md:flex-row gap-8 items-center">
+                <div class="w-full md:w-1/2">
+                    <div class="relative group w-full aspect-video bg-black rounded-lg border border-slate-800 overflow-hidden carousel-container">
+                        <div class="slides-wrapper relative w-full h-full">
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-100 z-10"><img src="images/plumbing1.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan bathroom layout" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+1'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing2.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan villa piping network" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+2'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing3.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan rooftop drainage" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+3'"></div>
+                            <div class="carousel-slide absolute inset-0 transition-opacity duration-500 opacity-0 z-0"><img src="images/plumbing4.jpg" class="w-full h-full object-contain" alt="Plumbing floor plan basement system" onerror="this.src='https://placehold.co/600x337/0f172a/2dd4bf?text=Plumbing+4'"></div>
+                        </div>
+                        <button class="prev-btn absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                        <button class="next-btn absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-slate-900/80 text-white flex items-center justify-center hover:bg-brand-accent hover:text-brand-bg transition-all border border-white/10 opacity-0 group-hover:opacity-100 z-20"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1 z-20 indicators"></div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <div class="flex items-center justify-between mb-3">
+                         <h4 class="text-lg font-bold text-white tracking-wide" data-i18n="exp3.sub1.title">Plumbing Floor Plans</h4>
+                         <span class="px-3 py-1 rounded border border-slate-700 text-xs text-brand-accent bg-brand-accent/5 font-mono">AutoCAD</span>
+                    </div>
+                    <p class="text-slate-400 leading-relaxed mb-4" data-i18n="exp3.sub1.desc">Comprehensive plumbing floor plans for residential projects (bathrooms, villas, houses) created in AutoCAD. Designs included fixture placement, piping networks, drainage systems, rainwater drainage for rooftops and balconies, yard drainage, and main shaft placement. Calculations included flow rates, tube sizing, grease interceptors, and pump selection for basement plumbing systems.</p>
+                </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
-
-  <!-- SKILLS -->
-  <section id="skills" class="skills">
-    <h2 class="section-title">Technical Toolbox</h2>
-    <div class="skills-grid">
-      <span>Siemens Nx</span>
-      <span>SOLIDWORKS</span>
-      <span>Blender 3D</span>
-      <span>Python</span>
-      <span>JavaScript</span>
-      <span>3D Printing/Slicing</span>
-      <span>FEA Simulation</span>
+  <!-- SKILLS SECTION -->
+  <section id="skills" class="py-20 bg-brand-surface border-t border-slate-800/50">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="inline-block p-2 rounded-full bg-slate-800 mb-6">
+        <i data-lucide="wrench" class="w-6 h-6 text-brand-accent"></i>
+      </div>
+      <h2 class="text-3xl font-bold mb-4 text-white" data-i18n="skills.title">Technical Toolbox</h2>
+      <p class="text-slate-400 mb-10 max-w-xl mx-auto" data-i18n="skills.subtitle">Software and technologies I use to bring ideas to life</p>
+      
+      <div class="flex flex-wrap justify-center gap-4">
+        <!-- Skill Pills -->
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="box" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors">Siemens NX</span>
+        </div>
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="cuboid" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors">SOLIDWORKS</span>
+        </div>
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="pen-tool" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors">Blender 3D</span>
+        </div>
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="code-2" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors">Python</span>
+        </div>
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="file-code" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors">JavaScript</span>
+        </div>
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="printer" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors" data-i18n="skill.print">3D Printing / Slicing</span>
+        </div>
+        <div class="group px-6 py-3 bg-slate-800 rounded-lg border border-slate-700 hover:border-brand-accent hover:bg-slate-800/80 transition-all cursor-default flex items-center gap-3 hover:-translate-y-1 shadow-lg">
+            <i data-lucide="activity" class="w-5 h-5 text-brand-accent"></i>
+            <span class="font-medium text-slate-200 group-hover:text-white transition-colors">FEA Simulation</span>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT ME -->
-  <section id="about" class="about">
-    <h2 class="section-title">About Me</h2>
-    
-    <div class="about-container">
-      <img src="images/My-Photo.jpg" alt="Photo of Azzam Daaboul" class="profile-photo">
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-20 px-6 bg-brand-bg relative z-10 border-t border-slate-800/50">
+    <div class="max-w-5xl mx-auto glass-panel rounded-3xl p-8 md:p-12 shadow-2xl">
+      <div class="flex flex-col md:flex-row items-center gap-12">
+        <!-- Profile Image -->
+        <div class="shrink-0 relative group">
+          <div class="absolute inset-0 rounded-full border-2 border-brand-accent blur-md opacity-40 group-hover:opacity-100 transition-opacity"></div>
+          <img src="images/My-Photo.jpg" alt="Azzam Daaboul" 
+               class="w-56 h-56 rounded-full border-4 border-slate-800 object-cover relative z-10 shadow-2xl grayscale group-hover:grayscale-0 transition-all duration-500"
+               onerror="this.src='https://placehold.co/224x224/0f172a/2dd4bf?text=AD'">
+        </div>
 
-      <div class="about-text">
-        <p>
-          I am a mechanical engineer, a graduate of Istanbul Bilgi University with professional experience in the manufacturing sector. 
-          I’ve always been driven by the technical "how" behind every mechanism, using hands-on projects to bring ideas to life through CAD and 3D printing.
-        </p>
-        <p>
-          For me, engineering isn't just about the digital model, it's about the challenge of making things work in the real world. 
-          I am constantly looking to push my technical limits and contribute to innovative solutions as I continue to grow and dive deeper into the industry.
-        </p>
+        <!-- Bio -->
+        <div class="text-center md:text-left flex-grow">
+          <h2 class="text-3xl font-bold mb-6 text-white" data-i18n="about.title">About Me</h2>
+          <div class="space-y-4 text-slate-300 text-lg leading-relaxed font-light">
+            <p data-i18n="about.p1">
+              I am a mechanical engineer, a graduate of Istanbul Bilgi University with professional experience in the manufacturing sector. 
+              I’ve always been driven by the technical "how" behind every mechanism, using hands-on projects to bring ideas to life through CAD and 3D printing.
+            </p>
+            <p data-i18n="about.p2">
+              For me, engineering isn't just about the digital model, it's about the challenge of making things work in the real world. 
+              I am constantly looking to push my technical limits and contribute to innovative solutions as I continue to grow and dive deeper into the industry.
+            </p>
+          </div>
+
+          <!-- Social Links -->
+          <div class="mt-8 flex flex-wrap gap-4 justify-center md:justify-start">
+            <a href="Transkript.pdf" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-slate-800 text-white hover:bg-brand-accent hover:text-brand-bg transition-all border border-slate-700 shadow-lg font-medium">
+              <i data-lucide="file-text" class="w-4 h-4"></i> <span data-i18n="link.resume">Resume</span>
+            </a>
+            <a href="https://www.linkedin.com/in/azzamd/" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#0077b5] text-white hover:bg-[#006097] transition-all border border-transparent shadow-lg font-medium">
+              <i data-lucide="linkedin" class="w-4 h-4"></i> LinkedIn
+            </a>
+            <a href="https://www.youtube.com/@Mr.Birunix" target="_blank" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-[#FF0000] text-white hover:bg-[#cc0000] transition-all border border-transparent shadow-lg font-medium">
+              <i data-lucide="youtube" class="w-4 h-4"></i> YouTube
+            </a>
+            <button onclick="copyEmail()" class="flex items-center gap-2 px-5 py-3 rounded-lg bg-slate-700 text-white hover:bg-slate-600 transition-all border border-slate-600 shadow-lg font-medium">
+              <i data-lucide="mail" class="w-4 h-4"></i> <span data-i18n="link.email">Copy Email</span>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Resume & Social Links -->
-    <div class="social-links">
-      <a href="Transkript.pdf" target="_blank" class="social-link">📄 Resume</a>
-      <a href="https://www.linkedin.com/in/azzamd/" target="_blank" class="social-link">🔗 LinkedIn</a>
-      <a href="https://www.youtube.com/@Mr.Birunix" target="_blank" class="social-link">▶️ YouTube</a>
-      <a href="javascript:void(0)" onclick="copyEmail()" class="social-link">📧 Gmail</a>
-    </div>
-    <div id="toast">Email copied!</div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2026 Azzam Daaboul | Engineered with Code</p>
+  <footer class="py-8 bg-black text-center text-slate-600 text-sm border-t border-slate-900 z-10 relative">
+    <p>&copy; 2026 Azzam Daaboul | <span data-i18n="footer">Engineered with Code</span></p>
   </footer>
 
-  <!-- Link external JS -->
-  <script src="script.js"></script>
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-8 left-1/2 -translate-x-1/2 bg-brand-accent text-brand-bg px-6 py-3 rounded-full shadow-[0_0_20px_rgba(45,212,191,0.4)] font-bold opacity-0 pointer-events-none transition-all duration-300 transform translate-y-10 flex items-center gap-2 z-50">
+    <i data-lucide="check-circle" class="w-5 h-5"></i>
+    <span data-i18n="toast.copied">Email copied to clipboard!</span>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    /* =========================
+       LOCALIZATION LOGIC
+       ========================= */
+    const translations = {
+      en: {
+        "nav.projects": "Projects",
+        "nav.experience": "Experience",
+        "nav.toolbox": "Toolbox",
+        "nav.about": "About",
+        "hero.status": "Available for Hire",
+        "hero.title1": "Mechanical Engineer",
+        "hero.title2": "CAD Specialist",
+        "hero.description": "Designing functional assemblies, engineering 3D printing solutions, and building web-based engineering tools. Bridging the gap between digital design and physical reality.",
+        "btn.viewProjects": "View Projects",
+        "btn.aboutMe": "About Me",
+        "section.featured": "Featured Projects",
+        "section.experience": "Professional Experience",
+        "viewer.loading": "Loading 3D Model...",
+        "viewer.label": "Interactive 3D View",
+        "proj1.category": "Mechanical Design",
+        "proj1.title": "3D-Printed Toy Revolver (Functional Prototype)",
+        "proj1.desc": "A fully 3D-printed, functional toy revolver designed to fire plastic toy bullets with accurate mechanical timing. The project focuses on realistic revolver kinematics while remaining safe, lightweight, and easy to assemble. All components were optimized for desktop 3D printing without metal parts or external hardware. This prototype is part of a larger concept: a fully 3D-printed revolver powered entirely by elastic rubber bands.",
+        "proj1.disclaimer": "Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.",
+        "label.features": "Key Features:",
+        "proj1.feat1": "Functional double-action trigger",
+        "proj1.feat2": "Optimized for 0.2mm layer height",
+        "proj1.feat3": "Print-in-place moving parts",
+        "tag.fdm": "FDM Printing",
+        "tag.proto": "Prototyping",
+        "proj_altor.category": "Mechanical Design",
+        "proj_altor.title": "Altor Pistol",
+        "proj_altor.desc": "A compact, single-shot pistol project showcasing mechanical design and prototyping.",
+        "proj_altor.disclaimer": "Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.",
+        "proj_bullet.category": "Prototyping & Animation",
+        "proj_bullet.title": "Spring Powered Plastic Bullet",
+        "proj_bullet.desc": "This is a 3D printed plastic bullet powered by a spring connected to the bullet head. When the primer is compressed, it releases the bullet head. ",
+        "proj_bullet.desc_anim": "This is a 3D animation made in Blender representing the internal mechanism of the bullet.",
+        "proj_tb.category": "Product Design",
+        "proj_tb.title": "Toothbrush Holder",
+        "proj_tb.desc": "A simple 2-piece brush holder that sticks to the wall. It holds the toothbrush from the neck, solving the problem of cups or original holders that collect water residue at the bottom.",
+        "proj_browning.category": "Mechanical Design",
+        "proj_browning.title": "Browning 1879 Lever Action",
+        "proj_browning.desc": "A detailed design of the first patent by the legendary John Moses Browning.",
+        "proj_browning.disclaimer": "Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.",
+        "proj_m4.category": "Mechanical Design",
+        "proj_m4.title": "M4 Rifle",
+        "proj_m4.desc": "A 3D design of the famous M4 rifle that shows the internal mechanism of the weapon.",
+        "proj_m4.disclaimer": "Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.",
+        "proj_luty.category": "Mechanical Design",
+        "proj_luty.title": "Luty SMG",
+        "proj_luty.desc": "An SMG designed by Mr. Philip Luty as a demonstration for English gun rights activism.",
+        "proj_luty.disclaimer": "Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.",
+        "exp1.title": "Mechanical Design Engineer – Plastic Injection Molding",
+        "exp1.company": "BNM Plastic Folly Life, Istanbul",
+        "exp1.resp1": "Specialized in the design of plastic injection molds based on international standards",
+        "exp1.resp2": "Developed detailed 3D models and technical drawings for complex mold assemblies",
+        "exp1.resp3": "Collaborated with manufacturing teams to ensure feasibility and production accuracy",
+        "exp1.resp4": "Improved design workflows through automation and standardization tools",
+        "exp1.sub1.title": "Cold Runner Mold",
+        "exp1.sub1.desc": "Plastic injection mold using a cold runner system with 2 cavities and 2 cores, producing 2 identical parts simultaneously.",
+        "exp1.sub2.title": "Hot Runner Mold",
+        "exp1.sub2.desc": "Plastic injection mold using a hot runner system with 2 cavities and cores, incorporating cavity inserts.",
+        "exp1.sub3.title": "Mop Stick Product Design",
+        "exp1.sub3.desc": "Product design of a mop similar to market designs but improved. Designed with proper drafts and tolerances for plastic injection molding.",
+        "exp1.sub4.title": "Plate List Automation",
+        "exp1.sub4.desc": "Automated the generation of mold plate lists in Siemens NX using NX Open programming. Instead of manually measuring and entering plate dimensions into Excel, the tool allows naming plates via a drop-down menu and generates an Excel sheet automatically with x, y, z dimensions, names, material, and quantity.",
+        "exp1.disclaimer": "Disclaimer: These models are not 1:1 scale, not functional, and are intended only for technical representation and learning purposes. They are not designed or meant for any criminal use.",
+        
+        /* New Internship Entries */
+        "exp2.title": "Mechanical Engineering Intern",
+        "exp2.company": "Oubari Makina Dizayn, Istanbul",
+        "exp2.resp1": "Supported the design and modeling of machine components",
+        "exp2.resp2": "Assisted in drafting and technical documentation",
+        "exp2.resp3": "Gained exposure to industrial design processes",
+        "exp2.sub1.title": "Conveyor Belt (C-50)",
+        "exp2.sub1.desc": "A fully detailed 3D model of the C-50 conveyor belt, designed in Autodesk Inventor for food production lines. The design comprises 106 parts, including real-world components such as the Finex motor. Detailed technical drawings were created for each part, sheet metal components exported as DXF files for laser cutting, and a complete BOM generated for accurate production and assembly.",
+        
+        "exp3.title": "Mechanical Engineering Intern",
+        "exp3.company": "Associated Mechanical Engineers (AME), Beirut",
+        "exp3.resp1": "Assisted senior engineers in design and documentation tasks",
+        "exp3.resp2": "Applied basic mechanical principles in hands-on projects",
+        "exp3.sub1.title": "Plumbing Floor Plans",
+        "exp3.sub1.desc": "Comprehensive plumbing floor plans for residential projects (bathrooms, villas, houses) created in AutoCAD. Designs included fixture placement, piping networks, drainage systems, rainwater drainage for rooftops and balconies, yard drainage, and main shaft placement. Calculations included flow rates, tube sizing, grease interceptors, and pump selection for basement plumbing systems.",
+
+        "proj2.category": "Design Portfolio",
+        "proj2.title": "Other Engineering Works",
+        "proj2.desc": "A collection of miscellaneous CAD projects ranging from consumer product concepts to industrial equipment parts. These projects highlight versatility in surfacing, complex assembly management, and rendering.",
+        "tag.render": "Rendering",
+        "skills.title": "Technical Toolbox",
+        "skills.subtitle": "Software and technologies I use to bring ideas to life",
+        "skill.print": "3D Printing / Slicing",
+        "about.title": "About Me",
+        "about.p1": "I am a mechanical engineer, a graduate of Istanbul Bilgi University with professional experience in the manufacturing sector. I’ve always been driven by the technical \"how\" behind every mechanism, using hands-on projects to bring ideas to life through CAD and 3D printing.",
+        "about.p2": "For me, engineering isn't just about the digital model, it's about the challenge of making things work in the real world. I am constantly looking to push my technical limits and contribute to innovative solutions as I continue to grow and dive deeper into the industry.",
+        "link.resume": "Resume",
+        "link.email": "Copy Email",
+        "footer": "Engineered with Code",
+        "toast.copied": "Email copied to clipboard!"
+      },
+      tr: {
+        "nav.projects": "Projeler",
+        "nav.experience": "Deneyim",
+        "nav.toolbox": "Araçlar",
+        "nav.about": "Hakkımda",
+        "hero.status": "İş Tekliflerine Açık",
+        "hero.title1": "Makine Mühendisi",
+        "hero.title2": "CAD Uzmanı",
+        "hero.description": "Fonksiyonel montajlar tasarlıyor, 3D baskı çözümleri geliştiriyor ve web tabanlı mühendislik araçları üretiyorum. Dijital tasarım ile fiziksel gerçeklik arasındaki köprüyü kuruyorum.",
+        "btn.viewProjects": "Projeleri Gör",
+        "btn.aboutMe": "Hakkımda",
+        "section.featured": "Öne Çıkan Projeler",
+        "section.experience": "Profesyonel Deneyim",
+        "viewer.loading": "3D Model Yükleniyor...",
+        "viewer.label": "İnteraktif 3D Görünüm",
+        "proj1.category": "Mekanik Tasarım",
+        "proj1.title": "3D Basılmış Oyuncak Altıpatlar (Fonksiyonel Prototip)",
+        "proj1.desc": "Plastik oyuncak mermileri hassas mekanik zamanlama ile ateşlemek üzere tasarlanmış, tamamen 3D basılmış, işlevsel bir oyuncak altıpatlar. Proje, güvenli, hafif ve montajı kolay olurken gerçekçi altıpatlar kinematiğine odaklanmaktadır. Tüm bileşenler, metal parçalar veya harici donanım olmadan masaüstü 3D baskı için optimize edilmiştir. Bu prototip, tamamen elastik lastik bantlarla çalışan, tamamen 3D basılmış bir altıpatlar olan daha büyük bir konseptin parçasıdır.",
+        "proj1.disclaimer": "Yasal Uyarı: Bu modeller 1:1 ölçekli değildir, işlevsel değildir ve yalnızca teknik gösterim ve öğrenme amaçlıdır. Herhangi bir suç unsuru oluşturacak kullanım için tasarlanmamıştır.",
+        "label.features": "Önemli Özellikler:",
+        "proj1.feat1": "İşlevsel çift hareketli tetik",
+        "proj1.feat2": "0.2mm katman yüksekliği için optimize",
+        "proj1.feat3": "Yerinde baskı (Print-in-place) hareketli parçalar",
+        "tag.fdm": "FDM Baskı",
+        "tag.proto": "Prototipleme",
+        "proj_altor.category": "Mekanik Tasarım",
+        "proj_altor.title": "Altor Tabanca Tasarımı",
+        "proj_altor.desc": "Mekanik tasarım ve prototipleme yeteneklerini sergileyen kompakt, tek atışlı bir tabanca projesi.",
+        "proj_altor.disclaimer": "Yasal Uyarı: Bu modeller 1:1 ölçekli değildir, işlevsel değildir ve yalnızca teknik gösterim ve öğrenme amaçlıdır. Herhangi bir suç unsuru oluşturacak kullanım için tasarlanmamıştır.",
+        "proj_bullet.category": "Prototipleme ve Animasyon",
+        "proj_bullet.title": "Yaylı Plastik Mermi",
+        "proj_bullet.desc": "Bu, mermi başına bağlı bir yay ile güçlendirilmiş 3D baskılı plastik mermidir. Kapsül sıkıştırıldığında mermi başını serbest bırakır.",
+        "proj_bullet.desc_anim": "Bu, merminin iç mekanizmasını temsil eden Blender'da yapılmış bir 3D animasyondur.",
+        "proj_tb.category": "Ürün Tasarımı",
+        "proj_tb.title": "Diş Fırçası Tutacağı",
+        "proj_tb.desc": "Duvara monte edilen basit 2 parçalı bir fırça tutacağı. Fırçayı boyun kısmından tutarak, bardakların veya orijinal tutucuların tabanında su birikmesi sorununu çözer.",
+        "proj_browning.category": "Mekanik Tasarım",
+        "proj_browning.title": "Browning 1879 Levye Mekanizması",
+        "proj_browning.desc": "Efsanevi John Moses Browning'in ilk patentinin detaylı bir tasarımı.",
+        "proj_browning.disclaimer": "Yasal Uyarı: Bu modeller 1:1 ölçekli değildir, işlevsel değildir ve yalnızca teknik gösterim ve öğrenme amaçlıdır. Herhangi bir suç unsuru oluşturacak kullanım için tasarlanmamıştır.",
+        "proj_m4.category": "Mekanik Tasarım",
+        "proj_m4.title": "M4 Tüfeği",
+        "proj_m4.desc": "Silahın iç mekanizmasını gösteren ünlü M4 tüfeğinin 3D tasarımı.",
+        "proj_m4.disclaimer": "Yasal Uyarı: Bu modeller 1:1 ölçekli değildir, işlevsel değildir ve yalnızca teknik gösterim ve öğrenme amaçlıdır. Herhangi bir suç unsuru oluşturacak kullanım için tasarlanmamıştır.",
+        "proj_luty.category": "Mekanik Tasarım",
+        "proj_luty.title": "Luty SMG",
+        "proj_luty.desc": "Bay Philip Luty tarafından İngiliz silah hakları aktivizmi için bir gösteri olarak tasarlanan SMG.",
+        "proj_luty.disclaimer": "Yasal Uyarı: Bu modeller 1:1 ölçekli değildir, işlevsel değildir ve yalnızca teknik gösterim ve öğrenme amaçlıdır. Herhangi bir suç unsuru oluşturacak kullanım için tasarlanmamıştır.",
+        "exp1.title": "Mekanik Tasarım Mühendisi – Plastik Enjeksiyon Kalıpçılığı",
+        "exp1.company": "BNM Plastic Folly Life, İstanbul",
+        "exp1.resp1": "Uluslararası standartlara dayalı plastik enjeksiyon kalıplarının tasarımında uzmanlaştı",
+        "exp1.resp2": "Karmaşık kalıp montajları için detaylı 3D modeller ve teknik çizimler geliştirdi",
+        "exp1.resp3": "Üretim doğruluğu ve uygulanabilirlik için üretim ekipleriyle işbirliği yaptı",
+        "exp1.resp4": "Otomasyon ve standardizasyon araçlarıyla tasarım iş akışlarını iyileştirdi",
+        "exp1.sub1.title": "Soğuk Yolluklu Kalıp",
+        "exp1.sub1.desc": "2 boşluklu ve 2 maçalı, aynı anda 2 özdeş parça üreten soğuk yolluk sistemli plastik enjeksiyon kalıbı.",
+        "exp1.sub2.title": "Sıcak Yolluklu Kalıp",
+        "exp1.sub2.desc": "2 boşluk ve maça içeren, boşluk ekleri (insert) barındıran sıcak yolluk sistemli plastik enjeksiyon kalıbı.",
+        "exp1.sub3.title": "Paspas Sapı Ürün Tasarımı",
+        "exp1.sub3.desc": "Piyasadaki tasarımlara benzer ancak geliştirilmiş paspas ürün tasarımı. Plastik enjeksiyon kalıplama için uygun draft ve toleranslarla tasarlandı.",
+        "exp1.sub4.title": "Plaka Listesi Otomasyonu",
+        "exp1.sub4.desc": "Siemens NX'te NX Open programlama kullanılarak kalıp plaka listelerinin oluşturulmasını otomatize etti.",
+        "exp1.disclaimer": "Yasal Uyarı: Bu modeller 1:1 ölçekli değildir, işlevsel değildir ve yalnızca teknik gösterim ve öğrenme amaçlıdır. Herhangi bir suç unsuru oluşturacak kullanım için tasarlanmamıştır.",
+        
+        /* New Internship Entries (Turkish) */
+        "exp2.title": "Makine Mühendisliği Stajyeri",
+        "exp2.company": "Oubari Makina Dizayn, İstanbul",
+        "exp2.resp1": "Makine bileşenlerinin tasarımı ve modellenmesine destek verildi",
+        "exp2.resp2": "Teknik çizim ve dokümantasyona yardımcı olundu",
+        "exp2.resp3": "Endüstriyel tasarım süreçleri hakkında deneyim kazanıldı",
+        "exp2.sub1.title": "Konveyör Bant (C-50)",
+        "exp2.sub1.desc": "Gıda üretim hatları için Autodesk Inventor'da tasarlanmış C-50 konveyör bandının tam detaylı 3D modeli. Tasarım, Finex motor gibi gerçek dünya bileşenleri dahil olmak üzere 106 parçadan oluşmaktadır. Her bir parça için detaylı teknik çizimler oluşturuldu, sac levha bileşenler lazer kesim için DXF olarak dışa aktarıldı ve doğru üretim ve montaj için tam bir malzeme listesi (BOM) oluşturuldu.",
+        
+        "exp3.title": "Makine Mühendisliği Stajyeri",
+        "exp3.company": "Associated Mechanical Engineers (AME), Beyrut",
+        "exp3.resp1": "Tasarım ve dokümantasyon görevlerinde kıdemli mühendislere yardımcı olundu",
+        "exp3.resp2": "Uygulamalı projelerde temel mekanik prensipler uygulandı",
+        "exp3.sub1.title": "Sıhhi Tesisat Kat Planları",
+        "exp3.sub1.desc": "AutoCAD'de konut projeleri (banyolar, villalar, evler) için oluşturulan kapsamlı sıhhi tesisat kat planları. Tasarımlar; armatür yerleşimi, boru ağları, drenaj sistemleri, çatılar ve balkonlar için yağmur suyu drenajı, bahçe drenajı ve ana şaft yerleşimini içeriyordu. Hesaplamalar; akış hızları, boru boyutlandırma, yağ tutucular ve bodrum kat tesisat sistemleri için pompa seçimini kapsıyordu.",
+
+        "proj2.category": "Tasarım Portfolyosu",
+        "proj2.title": "Diğer Mühendislik Çalışmaları",
+        "proj2.desc": "Tüketici ürünlerinden endüstriyel ekipman parçalarına kadar çeşitli CAD projelerinden oluşan bir koleksiyon. Bu projeler, yüzey modelleme, karmaşık montaj yönetimi ve render konularındaki çok yönlülüğü vurgulamaktadır.",
+        "tag.render": "Render Alma",
+        "skills.title": "Teknik Araçlar",
+        "skills.subtitle": "Fikirleri hayata geçirmek için kullandığım yazılım ve teknolojiler",
+        "skill.print": "3D Baskı / Dilimleme",
+        "about.title": "Hakkımda",
+        "about.p1": "Ben bir makine mühendisiyim, İstanbul Bilgi Üniversitesi mezunuyum ve üretim sektöründe profesyonel deneyime sahibim. CAD ve 3D baskı yoluyla fikirleri hayata geçirmek için uygulamalı projeler kullanarak her mekanizmanın arkasındaki teknik \"nasıl\" sorusuyla her zaman motive oldum.",
+        "about.p2": "Benim için mühendislik sadece dijital modelden ibaret değil, gerçek dünyada işleri yürütme mücadelesidir. Endüstride büyümeye ve daha derine inmeye devam ederken teknik sınırlarımı zorlamaya ve yenilikçi çözümlere katkıda bulunmaya sürekli çalışıyorum.",
+        "link.resume": "Özgeçmiş",
+        "link.email": "E-postayı Kopyala",
+        "footer": "Kod ile Mühendisliği Yapıldı",
+        "toast.copied": "E-posta panoya kopyalandı!"
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      // Switch State
+      currentLang = currentLang === 'en' ? 'tr' : 'en';
+      
+      // Update toggle button visuals
+      document.getElementById('lang-display').innerText = currentLang === 'en' ? 'EN' : 'TR';
+
+      // Update Text Content
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        const key = element.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+          element.innerText = translations[currentLang][key];
+        }
+      });
+    }
+    
+    function toggleMobileMenu() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    }
+
+    /* =========================
+       MODEL FALLBACK LOGIC
+       ========================= */
+    const modelViewer = document.getElementById('viewer-revolver');
+    if (modelViewer) {
+      modelViewer.addEventListener('error', (e) => {
+        // Fallback or silent fail (the UI looks fine with the poster)
+        console.log('3D Model failed to load (expected in preview without files)');
+      });
+    }
+
+    /* =========================
+       EMAIL COPY FUNCTION
+       ========================= */
+    function copyEmail() {
+      const email = "alazzam.daaboul@gmail.com";
+      const toast = document.getElementById("toast");
+      
+      const textArea = document.createElement("textarea");
+      textArea.value = email;
+      document.body.appendChild(textArea);
+      textArea.select();
+      
+      try {
+        document.execCommand('copy');
+        
+        // Show Toast
+        toast.classList.remove("opacity-0", "translate-y-10");
+        toast.classList.add("opacity-100", "translate-y-0");
+        
+        setTimeout(() => {
+          toast.classList.remove("opacity-100", "translate-y-0");
+          toast.classList.add("opacity-0", "translate-y-10");
+        }, 2000);
+      } catch (err) {
+        console.error("Fallback: Oops, unable to copy", err);
+      }
+      
+      document.body.removeChild(textArea);
+    }
+
+    /* =========================
+       VIDEO OBSERVER (PAUSE ON SCROLL)
+       ========================= */
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) {
+          const video = entry.target;
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('video').forEach(video => {
+      videoObserver.observe(video);
+    });
+    
+    /* =========================
+       SCROLL SPY NAV
+       ========================= */
+    const sections = document.querySelectorAll('section, main');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href').includes(current)) {
+                link.classList.add('active');
+            }
+        });
+        
+        // Navbar glass effect on scroll
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.classList.add('bg-brand-bg/80', 'backdrop-blur-md', 'shadow-lg');
+        } else {
+            navbar.classList.remove('bg-brand-bg/80', 'backdrop-blur-md', 'shadow-lg');
+        }
+    });
+
+    /* =========================
+       CAROUSEL LOGIC
+       ========================= */
+    class Carousel {
+      constructor(containerElement) {
+        this.container = containerElement;
+        this.slides = Array.from(this.container.querySelectorAll('.carousel-slide'));
+        this.indicatorsContainer = this.container.querySelector('.indicators');
+        this.prevBtn = this.container.querySelector('.prev-btn');
+        this.nextBtn = this.container.querySelector('.next-btn');
+        this.currentIndex = 0;
+        
+        const descTargetId = this.container.getAttribute('data-desc-target');
+        this.descTarget = descTargetId ? document.getElementById(descTargetId) : null;
+
+        this.init();
+      }
+
+      init() {
+        if (this.slides.length === 0) return;
+
+        // Create Indicators
+        this.slides.forEach((_, index) => {
+          const dot = document.createElement('button');
+          dot.className = `h-1 rounded-full transition-all duration-300 ${index === 0 ? 'bg-brand-accent w-6' : 'bg-white/30 w-2 hover:bg-white'}`;
+          dot.addEventListener('click', () => this.goToSlide(index));
+          this.indicatorsContainer.appendChild(dot);
+        });
+
+        this.indicators = Array.from(this.indicatorsContainer.children);
+
+        // Event Listeners
+        if(this.prevBtn) this.prevBtn.addEventListener('click', () => this.prev());
+        if(this.nextBtn) this.nextBtn.addEventListener('click', () => this.next());
+
+        this.updateSlideClasses();
+      }
+
+      goToSlide(index) {
+        const currentVideo = this.slides[this.currentIndex].querySelector('video');
+        if (currentVideo) currentVideo.pause();
+
+        this.currentIndex = index;
+        this.updateSlideClasses();
+
+        if (this.descTarget) {
+          this.updateDescription();
+        }
+      }
+
+      next() {
+        let newIndex = (this.currentIndex + 1) % this.slides.length;
+        this.goToSlide(newIndex);
+      }
+
+      prev() {
+        let newIndex = (this.currentIndex - 1 + this.slides.length) % this.slides.length;
+        this.goToSlide(newIndex);
+      }
+
+      updateSlideClasses() {
+        this.slides.forEach((slide, index) => {
+          if (index === this.currentIndex) {
+            slide.classList.remove('opacity-0', 'z-0');
+            slide.classList.add('opacity-100', 'z-10');
+          } else {
+            slide.classList.remove('opacity-100', 'z-10');
+            slide.classList.add('opacity-0', 'z-0');
+          }
+        });
+
+        this.indicators.forEach((dot, index) => {
+          if (index === this.currentIndex) {
+            dot.classList.remove('bg-white/30', 'w-2');
+            dot.classList.add('bg-brand-accent', 'w-6');
+          } else {
+            dot.classList.remove('bg-brand-accent', 'w-6');
+            dot.classList.add('bg-white/30', 'w-2');
+          }
+        });
+      }
+
+      updateDescription() {
+        const currentSlide = this.slides[this.currentIndex];
+        const overrideKey = currentSlide.getAttribute('data-override-key');
+        
+        if (!this.descTarget.hasAttribute('data-original-key')) {
+          this.descTarget.setAttribute('data-original-key', this.descTarget.getAttribute('data-i18n'));
+        }
+
+        const originalKey = this.descTarget.getAttribute('data-original-key');
+        const targetKey = overrideKey || originalKey;
+
+        if (translations[currentLang][targetKey]) {
+           this.descTarget.innerText = translations[currentLang][targetKey];
+           this.descTarget.setAttribute('data-i18n', targetKey);
+        }
+      }
+    }
+
+    document.querySelectorAll('.carousel-container').forEach(container => {
+      new Carousel(container);
+    });
+  </script>
 </body>
 </html>
